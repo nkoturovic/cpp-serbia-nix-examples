@@ -1,0 +1,7 @@
+[requires]
+spdlog/1.11.0
+# sdl/2.26.1
+# sdl_ttf/2.0.15
+
+[generators]
+cmake
