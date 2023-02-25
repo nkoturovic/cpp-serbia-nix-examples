@@ -1,10 +1,22 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <cstdlib>
+
 #include <spdlog/spdlog.h>
+#include <fmt/format.h>
  
 int main(int argc, char ** argv)
 {    
     spdlog::set_level(spdlog::level::debug);
+
+    if (argc < 2) {
+        spdlog::error("Invalid number of arguments");
+        fmt::print("Usage: ./hello_cpp_serbia <path_to_ttf_font>\n", argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    spdlog::info("Font path: {}", argv[1]);
+
     bool quit = false;
     SDL_Event event;
  
@@ -19,7 +31,7 @@ int main(int argc, char ** argv)
     SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
     SDL_Color white_color = {255, 255, 255};
 
-    TTF_Font* sans_font = TTF_OpenFont("../../OpenSans-Regular.ttf", 24);
+    TTF_Font* sans_font = TTF_OpenFont(argv[1], 24);
     SDL_Surface* message_surface =
     TTF_RenderText_Solid(sans_font, "Hello C++ Serbia", white_color); 
 

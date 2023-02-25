@@ -18,3 +18,5 @@ target_link_libraries(hello_cpp_serbia PRIVATE
     SDL2_ttf::SDL2_ttf
     ${CONAN_LIBS}
 )
+
+install(TARGETS hello_cpp_serbia DESTINATION bin)

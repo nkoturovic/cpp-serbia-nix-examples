@@ -1,6 +1,0 @@
-*build*
-*.out
-*.o
-result
-compile_commands.json
-.cache
