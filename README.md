@@ -18,8 +18,9 @@ This repository contains code samples used in the C++ Serbia meetup on Nix packa
 ## Dependencies
 
 - C++ compiler, [CMake](https://cmake.org/)
-- [Conan package manager](https://conan.io/)
-- [Nix package manager](https://nixos.org/download.html)
+- [Conan package manager](https://conan.io/) ([`03_conan`](./03_conan))
+- [Nix package manager](https://nixos.org/download.html) ([`04_nix-shell`](./04_nix_shell), [`05_nix`](./05_nix))
+- [Docker](https://docker.com) ([`02_docker`](./02_docker))
 - Libraries: SDL2, SDL2_ttf, fmt, spdlog
 
 ## Building and running demo app
@@ -38,7 +39,16 @@ cmake ..  -DCMAKE_BUILD_TYPE=Debug
 make
 ```
 
-[`02_conan`](./02_conan): Relies on the Conan package manager
+[`02_docker`](./02_docker): Relies on Docker
+
+```sh
+docker build -t hello_cpp_serbia .
+docker run hello_cpp_serbia
+# You will probably need to stop it
+docker stop $(docker ps -a -q  --filter ancestor=hello_cpp_serbia)
+```
+
+[`03_conan`](./03_conan): Relies on the Conan package manager
 
 ```sh
 mkdir build 
@@ -47,7 +57,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 make
 ```
 
-[`03_nix-shell`](./03_nix_shell): Relies on the Nix package manager
+[`04_nix-shell`](./04_nix_shell): Relies on the Nix package manager
 
 ```sh
 nix-shell
@@ -57,7 +67,7 @@ cmake .. -DCMAKE_BUILD_TYPE=Debug
 make
 ```
 
-[`04_nix`](./04_nix_shell): Relies on the Nix package manager
+[`05_nix`](./05_nix): Relies on the Nix package manager
 
 ```sh
 nix-build
